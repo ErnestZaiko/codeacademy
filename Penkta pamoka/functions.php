@@ -85,14 +85,15 @@ function register($name, $lastname, $email, $password, $confirmPassword)
 }
 $data = $_POST;
 
-if (empty($data['name']) ||
+if (
+    empty($data['name']) ||
     empty($data['lastname']) ||
     empty($data['password']) ||
     empty($data['email']) ||
-    empty($data['confirm_password'])) {
-    
-    die('Please fill all required fields!');
+    empty($data['confirm_password'])
+) {
 
+    die('Please fill all required fields!');
 }
 register($name, $lastname, $email, $password, $confirmPassword);
 

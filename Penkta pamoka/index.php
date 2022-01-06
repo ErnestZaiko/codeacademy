@@ -46,11 +46,11 @@
             <br> -->
 
             <form action="functions.php" method="POST">
-                Name: <input type="text" name="name" autocomplete="off"/><br/>
-                Lastname: <input type="text" name="lastname" autocomplete="off"/><br/>
-                Email: <input type="text" name="email" autocomplete="off"/><br/>
-                Password: <input type="text" name="password" autocomplete="off"/><br/>
-                Confirm password: <input type="text" name="confirm_password" autocomplete="off"/><br/>
+                Name: <input type="text" name="name" placeholder="Your Name" autocomplete="off"/><br/><br/>
+                Lastname: <input type="text" name="lastname" placeholder="Your lastname" autocomplete="off"/><br/><br/>
+                Email: <input type="text" name="email" placeholder="email@domain" autocomplete="off"/><br/><br/>
+                Password: <input type="text" name="password" placeholder="Your password" autocomplete="off"/><br/><br/>
+                Confirm password: <input type="text" name="confirm_password" placeholder="Repeat password" autocomplete="off"/><br/><br/>
                 <input type="submit" value="Register" />
             </form>
         </div>
