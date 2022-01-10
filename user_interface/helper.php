@@ -1,45 +1,80 @@
 <?php
+const EMAIL_FIELD_KEY = 2;
 
-function clearEmail($email){
+const NICKNAME_FIELD_KEY = 3;
+
+const PASWORD_FIELD_KEY = 4;
+
+function clearEmail($email)
+{
     return trim(strtolower($email));
 }
 
-function isEmailValid($email){
+function isEmailValid($email)
+{
     return strpos($email, '@') !== false;
 }
 
-function isPasswordValid($pass1, $pass2){
+function isPasswordValid($pass1, $pass2)
+{
     return $pass1 === $pass2 && strlen($pass1) > 8;
 }
 
-function hashPassword($password){
-    return md5(md5($password). 'druska');
+function hashPassword($password)
+{
+    return md5(md5($password) . 'druska');
 }
 
-// name, last name, email, pass.
-function writeToCsv($data, $fileName){
+// name, last nameas, emailas, passwordas.
+function writeToCsv($data, $fileName)
+{
     $file = fopen($fileName, 'a');
-    foreach ($data as $element){
+    foreach ($data as $element) {
         fputcsv($file, $element);
     }
     fclose($file);
 }
 
-function readFromCsv($fileName){
+
+function readFromCsv($fileName)
+{
     $data = [];
-    $fh = fopen($fileName, 'r');
-    while (!feof($fh)){
-        $line = fgetcsv($fh);
-        if(!empty($line)){
-            $data[] = $line;
+    $file = fopen($fileName, 'r');
+    if ($file) {
+        while (!feof($file)) {
+            $line = fgetcsv($file);
+            if (!empty($line)) {
+                $data[] = $line;
+            }
         }
+        fclose($file);
     }
-    fclose($fh);
+
     return $data;
 }
 
-function debug($data){
-    echo '<pre>';
-    var_dump($data);
-    die();
+
+function isValueUniq($value, $key)
+{
+    $users = readFromCsv('users.csv');
+    foreach ($users as $user) {
+        if ($user[$key] === $value) {
+            return false;
+        }
+    }
+    return true;
 }
+
+
+function generateNickName($firstName, $lastName)
+{
+    return strtolower(substr($firstName, 0, 3) . substr($lastName, 0, 3));
+}
+
+
+// function debug($data)
+// {
+//     echo '<pre>';
+//     var_dump($data);
+//     die();
+// }
