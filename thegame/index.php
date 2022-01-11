@@ -13,8 +13,8 @@ $tools = [
 
 echo '<form action="core.php" method="POST">';
 echo '<select name="tool">';
-foreach($tools as $key => $tool){
-    echo '<option value="'.$key.'">'.$tool.'</option>';
+foreach ($tools as $key => $tool) {
+    echo '<option value="' . $key . '">' . $tool . '</option>';
 }
 echo '</select>';
 echo '<br>';

@@ -1,8 +1,9 @@
 <?php
 
-function writeToCsv($data, $fileName){
+function writeToCsv($data, $fileName)
+{
     $file = fopen($fileName, 'a');
-    foreach ($data as $element){
+    foreach ($data as $element) {
         fputcsv($file, $element);
     }
     fclose($file);
