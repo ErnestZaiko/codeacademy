@@ -9,7 +9,7 @@ const TOOL_SCISSORS = 'scissors';
 $toolsArray = [
     0 => TOOL_ROCK,
     1 => TOOL_PAPER,
-    2 => TOOL_SCISSORS
+    2 => TOOL_SCISSORS,
 ];
 
 if (isset($_POST['play'])) {
@@ -20,22 +20,22 @@ if (isset($_POST['play'])) {
     echo '<tr><td ><img width="200" src="image/' . $playerChoice . '.png"></td><td>VS</td><td ><img width="200" src="image/' . $pcChoice . '.png"></td></tr>';
     echo '</table>';
     if ($playerChoice == $pcChoice) {
-        $rezas = 'Lygiosios';
-        echo $rezas;
+        $outcome = 'Draw';
+        echo $outcome;
     } elseif ($playerChoice == TOOL_ROCK && $pcChoice == TOOL_SCISSORS) {
-        $rezas = 'Laimejote';
-        echo $rezas;
+        $outcome = 'Player_won';
+        echo $outcome;
     } elseif ($playerChoice == TOOL_PAPER && $pcChoice == TOOL_ROCK) {
-        $rezas = 'Laimejote';
-        echo $rezas;
+        $outcome = 'Player_won';
+        echo $outcome;
     } elseif ($playerChoice == TOOL_SCISSORS && $pcChoice == TOOL_PAPER) {
-        $rezas = 'Laimejote';
-        echo $rezas;
+        $outcome = 'Player_won';
+        echo $outcome;
     } else {
-        $rezas = 'Praleimejote';
-        echo $rezas;
+        $outcome = 'Player_lost';
+        echo $outcome;
     }
     $data = [];
-    $data[] = ['Player played with - ' . $playerChoice, 'PC played with - ' . $pcChoice, 'Rezas - ' . $rezas];
-    writeToCsv($data, 'rezai.csv');
+    $data[] = [$playerChoice, $pcChoice, $outcome];
+    writeToCsv($data, 'outcomes.csv');
 }

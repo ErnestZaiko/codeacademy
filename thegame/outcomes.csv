@@ -1,0 +1,16 @@
+scissors,paper,Player_won
+scissors,scissors,Draw
+scissors,rock,Player_lost
+scissors,paper,Player_won
+scissors,rock,Player_lost
+paper,rock,Player_won
+scissors,paper,Player_won
+rock,scissors,Player_won
+rock,paper,Player_lost
+rock,rock,Draw
+rock,paper,Player_lost
+rock,paper,Player_lost
+rock,rock,Draw
+rock,rock,Draw
+rock,paper,Player_lost
+rock,scissors,Player_won
