@@ -8,14 +8,10 @@ $dbName = "shop_lt";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
+    // echo "Connected successfully";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-
-// $sql = 'SELECT * FROM cities';
-// $ez = $conn->query($sql);
-// $cities = $rez->fetchAll();
 
 if (isset($_POST['createUser'])) {
 
@@ -31,8 +27,8 @@ if (isset($_POST['createUser'])) {
 
         $sql = 'INSERT INTO users (name, last_name, email, password, phone, city_id, created_at)
             VALUES ("' . $name . '", "' . $lastName . '", "' . $email . '", "' . $pass1 . '", "' . $phone . '", ' . $cityId . ', current_time)';
-            echo $sql;
         $conn->query($sql);
+        echo 'Registration done';
     } else {
         echo 'Check password and email, please';
     }
