@@ -16,7 +16,7 @@ try {
     //echo "Connection failed: " . $e->getMessage();
 }
 
-$sql = 'SELECT * FROM users WHERE email="' . $email . '" AND password="' . $userPassword . '"';
+$sql = 'SELECT * FROM users WHERE email="' . $email . '" AND password="' . $userPassword.'"';
 
 $rez = $conn->query($sql);
 $user = $rez->fetchAll();
