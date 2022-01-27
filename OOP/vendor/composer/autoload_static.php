@@ -14,7 +14,9 @@ class ComposerStaticInit821e806b6bb9096196063152cbb9632b
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Controller\\Catalog' => __DIR__ . '/../..' . '/app/code/Controller/Catalog.php',
         'Controller\\User' => __DIR__ . '/../..' . '/app/code/Controller/User.php',
+        'Helper\\DBHelper' => __DIR__ . '/../..' . '/app/code/Helper/DBHelper.php',
         'Helper\\FormHelper' => __DIR__ . '/../..' . '/app/code/Helper/FormHelper.php',
+        'Helper\\Validator' => __DIR__ . '/../..' . '/app/code/Helper/Validator.php',
         'Model\\User' => __DIR__ . '/../..' . '/app/code/Model/User.php',
     );
 

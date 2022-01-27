@@ -3,6 +3,8 @@
 namespace Controller;
 
 use Helper\FormHelper;
+use Helper\Validator;
+use Model\User as UserModel;
 
 class User
 {
@@ -14,7 +16,7 @@ class User
 
     public function register()
     {
-        $form = new FormHelper('*', 'POST');
+        $form = new FormHelper('user/create', 'POST');
         $form->input([
             'Name' => 'name',
             'type' => 'text',
@@ -48,7 +50,7 @@ class User
 
     public function login()
     {
-        $form = new FormHelper('*', 'POST');
+        $form = new FormHelper('user/check', 'POST');
         $form->input([
             'Name' => 'email',
             'type' => 'email',
@@ -66,4 +68,15 @@ class User
         ]);
         echo $form->getForm();
     }
+
+    public function create()
+    {
+        $passMatch = Validator::checkPassword($_POST['password'], $_POST['password2']);
+        $isEmailValid = Validator::checkEmail($_POST['email']);
+        $isEmailUnic = UserModel::emailUnic($_POST['email']);
+        if($passMatch && $isEmailValid && $isEmailUnic){
+
+        }
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Helper;
 
 class FormHelper
@@ -7,7 +8,7 @@ class FormHelper
 
     public function __construct($action, $method)
     {
-        $this->form = '<form action="' . $action . '" method="' . $method . '">';
+        $this->form = '<form action="' . BASE_URL . $action . '" method="' . $method . '">';
     }
 
     /**
