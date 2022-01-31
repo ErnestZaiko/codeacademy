@@ -45,15 +45,37 @@ class DBHelper
         return $this;
     }
 
+    public function get()
+    {
+        $rez = $this->conn->query($this->sql);
+        $data = $rez->fetchAll();
+    }
+
     public function exec()
     {
         $this->conn->query($this->sql);
     }
 
-    public function get()
+
+    public function getOne()
     {
         $rez = $this->conn->query($this->sql);
         $data = $rez->fetchAll();
         return $data[0];
+    }
+
+
+    // name => Ernest,
+    // last_name => Zaiko
+    // name,last_name,email
+    public function insert($table, $data)
+    {
+        $this->sql .= 'INSERT INTO ' . $table .
+            ' (' . implode(',', array_keys($data)) . ')
+             VALUES ("' . implode('","', $data) . '")';
+        return $this;
+    }
+    public function update()
+    {
     }
 }
