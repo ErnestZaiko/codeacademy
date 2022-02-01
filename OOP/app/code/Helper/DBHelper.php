@@ -5,7 +5,6 @@ namespace Helper;
 class DBHelper
 {
     private $conn;
-
     private $sql;
 
     public function __construct()
@@ -39,6 +38,18 @@ class DBHelper
         return $this;
     }
 
+    public function andWhere($field, $value, $operator = '=')
+    {
+        $this->sql .= ' AND ' . $field . $operator . '"' . $value . '"';
+        return $this;
+    }
+
+    public function orWhere($field, $value, $operator = '=')
+    {
+        $this->sql .= ' OR ' . $field . $operator . '"' . $value . '"';
+        return $this;
+    }
+
     public function delete()
     {
         $this->sql .= 'DELETE ';
@@ -61,7 +72,11 @@ class DBHelper
     {
         $rez = $this->conn->query($this->sql);
         $data = $rez->fetchAll();
-        return $data[0];
+        if (!empty($data)) {
+            return $data[0];
+        } else {
+            return [];
+        }
     }
 
 
@@ -75,7 +90,25 @@ class DBHelper
              VALUES ("' . implode('","', $data) . '")';
         return $this;
     }
-    public function update()
+
+
+    public function update($table, $data)
     {
+        $this->sql .= 'UPDATE' . $table . ' SET ';
+        // UPDATE users SET;
+        $value = [];
+        foreach ($data as $column => $value) {
+            $value[] = "$column = '$value'";
+            // name = 'Ernest'
+            // last_name = 'Zaiko'
+        }
+
+        $this->sql .= implode(',', $value);
+        return $this;
+    }
+
+    public function limit($number)
+    {
+        $this->sql .= ' LIMIT ' . $number;
     }
 }

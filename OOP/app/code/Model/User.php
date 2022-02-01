@@ -114,6 +114,17 @@ class User
 
     private function update()
     {
+//        $data = [
+//            'name' => $this->name,
+//            'last_name' => $this->lastName,
+//            'email' => $this->email,
+//            'password' => $this->password,
+//            'phone' => $this->phone,
+//            'city_id' => $this->cityId
+//        ];
+//
+//        $db = new DBHelper();
+//        $db->update('users', $data)->where('id', $this->id)->exec();
     }
 
     public function delete($id)
@@ -141,5 +152,25 @@ class User
         $db = new DBHelper();
         $rez = $db->select()->from('users')->where('email', $email)->get();
         return empty($rez);
+    }
+
+    public static function checkLoginCredentionals($email, $pass)
+    {
+        $db = new DBHelper();
+        $rez = $db
+            ->select('id')
+            ->from('users')
+            ->where('email', $email)
+            ->andWhere('password', $pass)
+            ->getOne();
+
+        //print_r($rez);
+        if (isset($rez['id'])) {
+            return $rez['id'];
+        } else {
+            return false;
+        }
+
+        //return isset($rez['id']) ? $rez['id'] : false;
     }
 }

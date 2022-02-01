@@ -2,9 +2,11 @@
 
 namespace Controller;
 
+use Helper\DBHelper;
 use Helper\FormHelper;
 use Helper\Validator;
 use Model\User as UserModel;
+use Model\City;
 
 class User
 {
@@ -17,6 +19,7 @@ class User
     public function register()
     {
         $form = new FormHelper('user/create', 'POST');
+        
         $form->input([
             'Name' => 'name',
             'type' => 'text',
@@ -76,6 +79,7 @@ class User
             'type' => 'submit',
             'value' => 'Login'
         ]);
+
         echo $form->getForm();
     }
 
@@ -84,7 +88,7 @@ class User
         $passMatch = Validator::checkPassword($_POST['password'], $_POST['password2']);
         $isEmailValid = Validator::checkEmail($_POST['email']);
         $isEmailUnic = UserModel::emailUnic($_POST['email']);
-        if($passMatch && $isEmailValid && $isEmailUnic){
+        if ($passMatch && $isEmailValid && $isEmailUnic) {
             $user = new UserModel();
             $user->setName($_POST['name']);
             $user->setLastName($_POST['last_name']);
@@ -93,8 +97,20 @@ class User
             $user->setPhone($_POST['phone']);
             $user->setCityId(1);
             $user->save();
-
         }
     }
 
+    public function check()
+    {
+        $email = $_POST['email'];
+        $password = md5($_POST['password']);
+        $userId = UserModel::checkLoginCredentionals($email, $password);
+        if ($userId) {
+            $user = new UserModel();
+            $user->load($userId);
+            echo '<h2 style="text-align:left;">Zdarova zaebal!</h2>';
+        } else {
+            echo '<h2 style="text-align:left;">Pizdink tikrint duomenys!</h2';
+        }
+    }
 }

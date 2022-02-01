@@ -12,5 +12,6 @@ return array(
     'Helper\\DBHelper' => $baseDir . '/app/code/Helper/DBHelper.php',
     'Helper\\FormHelper' => $baseDir . '/app/code/Helper/FormHelper.php',
     'Helper\\Validator' => $baseDir . '/app/code/Helper/Validator.php',
+    'Model\\City' => $baseDir . '/app/code/Model/City.php',
     'Model\\User' => $baseDir . '/app/code/Model/User.php',
 );
