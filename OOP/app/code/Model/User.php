@@ -4,10 +4,10 @@ namespace Model;
 
 use Helper\DBHelper;
 use Helper\FormHelper;
+use Model\City;
 
 class User
 {
-
     private $id;
 
     private $name;
@@ -22,6 +22,7 @@ class User
 
     private $cityId;
 
+    private $city;
 
     public function getId()
     {
@@ -83,6 +84,11 @@ class User
         return $this->cityId;
     }
 
+    public function getCity()
+    {
+        return $this->city;
+    }
+
     public function setCityId($id)
     {
         $this->cityId = $id;
@@ -105,7 +111,7 @@ class User
             'email' => $this->email,
             'password' => $this->password,
             'phone' => $this->phone,
-            'city_id' => $this->cityId,
+            'city_id' => $this->cityId
         ];
 
         $db = new DBHelper();
@@ -114,23 +120,6 @@ class User
 
     private function update()
     {
-//        $data = [
-//            'name' => $this->name,
-//            'last_name' => $this->lastName,
-//            'email' => $this->email,
-//            'password' => $this->password,
-//            'phone' => $this->phone,
-//            'city_id' => $this->cityId
-//        ];
-//
-//        $db = new DBHelper();
-//        $db->update('users', $data)->where('id', $this->id)->exec();
-    }
-
-    public function delete($id)
-    {
-        $db = new DBHelper();
-        $db->delete()->from('users')->where('id', $this->id)->exec();
     }
 
     public function load($id)
@@ -140,10 +129,19 @@ class User
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->lastName = $data['last_name'];
+        $this->phone = $data['phone'];
         $this->email = $data['email'];
         $this->password = $data['password'];
-        $this->phone = $data['phone'];
         $this->cityId = $data['city_id'];
+        $city = new City();
+        $this->city = $city->load($this->cityId);
+        return $this;
+    }
+
+    public function delete()
+    {
+        $db = new DBHelper();
+        $db->delete()->from('users')->where('id', $this->id)->exec();
     }
 
 
@@ -164,13 +162,12 @@ class User
             ->andWhere('password', $pass)
             ->getOne();
 
-        //print_r($rez);
         if (isset($rez['id'])) {
             return $rez['id'];
         } else {
             return false;
         }
-
         //return isset($rez['id']) ? $rez['id'] : false;
     }
+
 }

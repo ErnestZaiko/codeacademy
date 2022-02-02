@@ -60,6 +60,7 @@ class DBHelper
     {
         $rez = $this->conn->query($this->sql);
         $data = $rez->fetchAll();
+        return $data;
     }
 
     public function exec()
