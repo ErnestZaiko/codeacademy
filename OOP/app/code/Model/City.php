@@ -26,6 +26,7 @@ class City
         $city = $db->select()->from('cities')->where('id', $id)->getOne();
         $this->id = $city['id'];
         $this->name = $city['name'];
+        return $this;
     }
 
     public static function getCities()

@@ -2,13 +2,16 @@
 
 include 'vendor/autoload.php';
 include 'config.php';
+
 session_start();
 
 
 if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '/') {
+
     $path = trim($_SERVER['PATH_INFO'], '/');
     echo '<pre>';
     $path = explode('/', $path);
+    
     print_r($path);
     $class = ucfirst($path[0]);
     $method = $path[1];

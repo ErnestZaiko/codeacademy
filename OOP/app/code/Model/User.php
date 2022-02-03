@@ -89,9 +89,9 @@ class User
         return $this->city;
     }
 
-    public function setCityId($id)
+    public function setCityId($cityId)
     {
-        $this->cityId = $id;
+        $this->cityId = $cityId;
     }
 
     public function save()
@@ -120,21 +120,35 @@ class User
 
     private function update()
     {
+        $data = [
+            'name' => $this->name,
+            'last_name' => $this->lastName,
+            'email' => $this->email,
+            'password' => $this->password,
+            'phone' => $this->phone,
+            'city_id' => $this->cityId
+        ];
+
+        $db = new DBHelper();
+        $db->update('users', $data)->where('id', $this->getId())->exec();
     }
 
     public function load($id)
     {
+        $city = new City();
         $db = new DBHelper();
+
         $data = $db->select()->from('users')->where('id', $id)->getOne();
+
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->lastName = $data['last_name'];
-        $this->phone = $data['phone'];
         $this->email = $data['email'];
         $this->password = $data['password'];
+        $this->phone = $data['phone'];
         $this->cityId = $data['city_id'];
-        $city = new City();
         $this->city = $city->load($this->cityId);
+
         return $this;
     }
 
@@ -147,6 +161,7 @@ class User
 
     public static function emailUnic($email)
     {
+        $email = strtolower(trim($email));
         $db = new DBHelper();
         $rez = $db->select()->from('users')->where('email', $email)->get();
         return empty($rez);
@@ -169,5 +184,4 @@ class User
         }
         //return isset($rez['id']) ? $rez['id'] : false;
     }
-
 }
