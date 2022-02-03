@@ -96,9 +96,12 @@ class User
 
     public function save()
     {
+        echo 'xxxxx0';
         if (!isset($this->id)) {
+            echo '1111';
             $this->create();
         } else {
+            echo '222';
             $this->update();
         }
     }
@@ -130,7 +133,7 @@ class User
         ];
 
         $db = new DBHelper();
-        $db->update('users', $data)->where('id', $this->getId())->exec();
+        $db->update('users', $data)->where('id', $this->id)->exec();
     }
 
     public function load($id)
