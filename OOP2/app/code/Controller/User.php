@@ -148,16 +148,15 @@ class User
         $user->setPhone($_POST['phone']);
         $user->setCityId($_POST['city_id']);
 
-        if($_POST['password'] != '' && Validator::checkPassword($_POST['password'], $_POST['password2'])) {
+        if ($_POST['password'] != '' && Validator::checkPassword($_POST['password'], $_POST['password2'])) {
             $user->setPassword(md5($_POST['password']));
         }
 
-        if($user->getEmail() != $_POST['email']){
-            if(Validator::checkEmail($_POST['email']) && UserModel::emailUnic($_POST['email'])) {
+        if ($user->getEmail() != $_POST['email']) {
+            if (Validator::checkEmail($_POST['email']) && UserModel::emailUnic($_POST['email'])) {
                 $user->setEmail($_POST['email']);
             }
         }
-
         $user->save();
         Url::redirect('user/edit');
 

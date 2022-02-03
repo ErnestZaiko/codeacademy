@@ -65,6 +65,7 @@ class DBHelper
 
     public function exec()
     {
+        echo $this->sql;
         $this->conn->query($this->sql);
     }
 
@@ -94,7 +95,7 @@ class DBHelper
 
     public function update($table, $data)
     {
-        $this->sql .= 'UPDATE ' . $table . ' SET ';
+        $this->sql .=' UPDATE ' . $table . ' SET ';
         $values = [];
         foreach ($data as $column => $value) {
             $values[] = "$column = '$value'";
