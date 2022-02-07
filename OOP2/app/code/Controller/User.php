@@ -8,8 +8,9 @@ use Helper\Validator;
 use Helper\Url;
 use Model\City;
 use Model\User as UserModel;
+use Core\AbstractController;
 
-class User
+class User extends AbstractController
 {
     public function show($id)
     {
@@ -65,7 +66,9 @@ class User
             'value' => 'register'
         ]);
 
-        echo $form->getForm();
+
+        $this->data['form'] = $form->getForm();
+        $this->render('user/register');
     }
 
     public function edit()
@@ -133,7 +136,8 @@ class User
             'value' => 'Edit'
         ]);
 
-        echo $form->getForm();
+        $this->data['form'] = $form->getForm();
+        $this->render('user/edit');
 
     }
 
@@ -181,7 +185,8 @@ class User
             'value' => 'login'
         ]);
 
-        echo $form->getForm();
+        $this->data['form'] = $form->getForm();
+        $this->render('user/login');
     }
 
     public function create()
@@ -224,6 +229,12 @@ class User
     public function logout()
     {
         session_destroy();
+    }
+
+    public function all()
+    {
+        $this->data['users'] = UserModel::getAllUsers();
+        $this->render('user/list');
     }
 
 }

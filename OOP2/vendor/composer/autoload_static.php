@@ -13,8 +13,10 @@ class ComposerStaticInit159a20f01c7e1886d91d8cb82f935be5
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Controller\\Catalog' => __DIR__ . '/../..' . '/app/code/Controller/Catalog.php',
+        'Controller\\Home' => __DIR__ . '/../..' . '/app/code/Controller/Home.php',
         'Controller\\Index\\Post' => __DIR__ . '/../..' . '/app/code/Controller/Index/Post.php',
         'Controller\\User' => __DIR__ . '/../..' . '/app/code/Controller/User.php',
+        'Core\\AbstractController' => __DIR__ . '/../..' . '/app/code/Core/AbstractController.php',
         'Helper\\DBHelper' => __DIR__ . '/../..' . '/app/code/Helper/DBHelper.php',
         'Helper\\FormHelper' => __DIR__ . '/../..' . '/app/code/Helper/FormHelper.php',
         'Helper\\Url' => __DIR__ . '/../..' . '/app/code/Helper/Url.php',
