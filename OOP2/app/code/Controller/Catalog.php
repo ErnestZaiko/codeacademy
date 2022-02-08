@@ -28,7 +28,6 @@ class Catalog extends AbstractController
             'type' => 'text',
             'placeholder' => 'Kaina'
         ]);
-        
         $form->input([
             'name' => 'year',
             'type' => 'text',
