@@ -11,7 +11,7 @@ if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '/') {
     $path = trim($_SERVER['PATH_INFO'], '/');
     // echo '<pre>';
     $path = explode('/', $path);
-    // print_r($path);
+    //    print_r($path);
     $class = ucfirst($path[0]);
     $method = $path[1];
     $class = '\Controller\\' . $class;
@@ -23,7 +23,6 @@ if (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] !== '/') {
             } else {
                 $obj->$method();
             }
-
         } else {
             echo '404';
         }

@@ -21,6 +21,7 @@ class ComposerStaticInit159a20f01c7e1886d91d8cb82f935be5
         'Helper\\FormHelper' => __DIR__ . '/../..' . '/app/code/Helper/FormHelper.php',
         'Helper\\Url' => __DIR__ . '/../..' . '/app/code/Helper/Url.php',
         'Helper\\Validator' => __DIR__ . '/../..' . '/app/code/Helper/Validator.php',
+        'Model\\Ad' => __DIR__ . '/../..' . '/app/code/Model/Ad.php',
         'Model\\City' => __DIR__ . '/../..' . '/app/code/Model/City.php',
         'Model\\User' => __DIR__ . '/../..' . '/app/code/Model/User.php',
     );

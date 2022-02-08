@@ -65,7 +65,6 @@ class DBHelper
 
     public function exec()
     {
-        echo $this->sql;
         $this->conn->query($this->sql);
     }
 
@@ -74,16 +73,15 @@ class DBHelper
     {
         $rez = $this->conn->query($this->sql);
         $data = $rez->fetchAll();
-        if(!empty($data)){
+        if (!empty($data)) {
             return $data[0];
-        }else{
+        } else {
             return [];
         }
-
     }
 
-    // name => Arnoldas,
-    // last_name => Turulis
+    // name => Ernest,
+    // last_name => Zaiko
     // name,last_name,email
     public function insert($table, $data)
     {
@@ -95,7 +93,7 @@ class DBHelper
 
     public function update($table, $data)
     {
-        $this->sql .=' UPDATE ' . $table . ' SET ';
+        $this->sql .= 'UPDATE ' . $table . ' SET ';
         $values = [];
         foreach ($data as $column => $value) {
             $values[] = "$column = '$value'";
@@ -108,5 +106,4 @@ class DBHelper
     {
         $this->sql .= ' LIMIT ' . $number;
     }
-
 }
