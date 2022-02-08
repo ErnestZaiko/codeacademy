@@ -6,6 +6,7 @@ use Core\AbstractController;
 use Helper\FormHelper;
 use Helper\Url;
 use Model\Ad;
+use Helper\DBHelper;
 
 class Catalog extends AbstractController
 {
@@ -60,9 +61,17 @@ class Catalog extends AbstractController
 
     public function edit($id)
     {
+
+        if (!isset($_SESSION['user_id'])) {
+            Url::redirect('');
+        }
+
         $ad = new Ad();
         $ad->load($id);
 
+        if ($_SESSION['user_id'] != $ad->getUserId()) {
+            Url::redirect('');
+        }
         $form = new FormHelper('catalog/update', 'POST');
         $form->input([
             'name' => 'title',
@@ -94,8 +103,8 @@ class Catalog extends AbstractController
 
         $form->input([
             'type' => 'submit',
-            'value' => 'sukurti',
-            'name' => 'create'
+            'value' => 'Save',
+            'name' => 'Save'
         ]);
 
         $this->data['form'] = $form->getForm();
@@ -116,4 +125,15 @@ class Catalog extends AbstractController
         $ad->setTypeId(1);
         $ad->save();
     }
+
+    public function all()
+    {
+        
+    }
+
+    public function show($id)
+    {
+
+    }
+
 }
