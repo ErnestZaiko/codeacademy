@@ -86,8 +86,8 @@ class DBHelper
 
     }
 
-    // name => Arnoldas,
-    // last_name => Turulis
+    // name => Ernest,
+    // last_name => Zaiko
     // name,last_name,email
 
     public function insert($table, $data)

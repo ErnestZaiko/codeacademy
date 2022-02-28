@@ -12,7 +12,7 @@ use Model\User;
 use Model\User as UserModel;
 use Core\Interfaces\ControllerInterface;
 
-class Admin extends AbstractController implements ControllerInterface
+class Admin extends AbstractController //implements ControllerInterface
 {
     public const ACTIVE = 1;
 

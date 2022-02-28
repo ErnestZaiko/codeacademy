@@ -6,7 +6,7 @@ use Helper\DBHelper;
 use Core\AbstractModel;
 use Core\Interfaces\ModelInterface;
 
-class Ad extends AbstractModel implements ModelInterface
+class Ad extends AbstractModel //implements ModelInterface
 {
     protected const TABLE = 'ads';
 
@@ -256,7 +256,7 @@ class Ad extends AbstractModel implements ModelInterface
     public function loadBySlug($slug)
     {
         $db = new DBHelper();
-        $rez = $db->select()->from($this->table)->where('slug', $slug)->getOne();
+        $rez = $db->select()->from(self::TABLE)->where('slug', $slug)->getOne();
         if (!empty($rez)) {
             $this->load($rez['id']);
             return $this;

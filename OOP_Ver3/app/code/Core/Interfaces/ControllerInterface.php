@@ -1,8 +1,10 @@
-<?php
+<!-- <?php
 
-namespace Core\Interfaces;
+// namespace Core\Interfaces;
 
-interface ControllerInterface
-{
-    public function index();
-}
+// interface ControllerInterface
+// {
+//    public function index();
+// }
+
+?> -->

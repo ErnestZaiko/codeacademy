@@ -1,12 +1,13 @@
-<?php
+<!-- <?php
 
-namespace Core\Interfaces;
+// namespace Core\Interfaces;
 
-interface ModelInterface
-{
-    public const TABLE = '';
-    
-    public function load($id);
+// interface ModelInterface
+// {
 
-    public function assignData();
-}
+//     public function load($id);
+
+//     public function assignData();
+// }
+
+?> -->
