@@ -1,13 +1,13 @@
-<!-- <?php
+<?php
 
-// namespace Core\Interfaces;
+namespace Core\Interfaces;
 
-// interface ModelInterface
-// {
+interface ModelInterface
+{
 
-//     public function load($id);
+    public function load($id);
 
-//     public function assignData();
-// }
+    public function assignData();
+}
 
-?> -->
+?>

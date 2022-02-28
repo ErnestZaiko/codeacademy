@@ -8,7 +8,7 @@ use Model\City;
 use Core\AbstractModel;
 use Core\Interfaces\ModelInterface;
 
-class User extends AbstractModel //implements ModelInterface
+class User extends AbstractModel implements ModelInterface
 {
     private $name;
 
