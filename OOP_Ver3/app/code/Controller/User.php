@@ -11,7 +11,7 @@ use Model\User as UserModel;
 use Core\AbstractController;
 use Core\Interfaces\ControllerInterface;
 
-class User extends AbstractController //implements ControllerInterface
+class User extends AbstractController implements ControllerInterface
 {
     public function index()
     {

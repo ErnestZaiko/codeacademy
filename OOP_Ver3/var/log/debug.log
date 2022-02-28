@@ -2325,3 +2325,26 @@ Kaunas 3999',manufacturer_id = '1',model_id = '1',price = '4000',year = '1976',t
 2022/02/28 21:03:43 SELECT *  FROM ads  WHERE active="1" LIMIT 2
 2022/02/28 21:03:43 SELECT *  FROM ads  WHERE id="9"
 2022/02/28 21:03:43 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:20 SELECT count(*)  FROM ads  WHERE active="1"
+2022/02/28 21:15:20 SELECT *  FROM ads  WHERE active="1" LIMIT 2
+2022/02/28 21:15:20 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:20 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE active="1" ORDER BY views DESC  LIMIT 5
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE active="1" ORDER BY id DESC  LIMIT 5
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:21 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:22 SELECT count(*)  FROM ads  WHERE active="1"
+2022/02/28 21:15:22 SELECT *  FROM ads  WHERE active="1" LIMIT 2
+2022/02/28 21:15:22 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:22 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:23 SELECT *  FROM ads  WHERE slug="bmw"
+2022/02/28 21:15:23 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:23 UPDATE ads SET title = 'BMW 530',description = 'Kaip nauja, ka tik nuo tralo!',manufacturer_id = '1',model_id = '1',price = '12000',year = '2013',type_id = '1',user_id = '30',image = 'https://autoplius-img.dgn.lt/ann_3_212030526/bmw-530-3-0-l-sedanas-2017-dyzelinas-0.jpg',active = '1',slug = 'bmw',views = '4' WHERE id="9"
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE active="1" ORDER BY views DESC  LIMIT 5
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE id="9"
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE active="1" ORDER BY id DESC  LIMIT 5
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE id="10"
+2022/02/28 21:15:24 SELECT *  FROM ads  WHERE id="9"

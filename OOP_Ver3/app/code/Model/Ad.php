@@ -6,7 +6,7 @@ use Helper\DBHelper;
 use Core\AbstractModel;
 use Core\Interfaces\ModelInterface;
 
-class Ad extends AbstractModel //implements ModelInterface
+class Ad extends AbstractModel implements ModelInterface
 {
     protected const TABLE = 'ads';
 
