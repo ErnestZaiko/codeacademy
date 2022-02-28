@@ -4,12 +4,25 @@ namespace Controller;
 
 use Core\AbstractController;
 use Helper\FormHelper;
+use Helper\Logger;
 use Helper\Url;
 use Model\Ad;
-use Helper\DBHelper;
 
 class Catalog extends AbstractController
 {
+
+    public function index()
+    {
+        $this->data['count'] = Ad::count();
+        $page = 0;
+        if(isset($_GET['p'])){
+            $page = (int)$_GET['p'] - 1;
+        }
+
+        $this->data['ads'] = Ad::getAllAds($page * 2, 2);
+        $this->render('catalog/all');
+    }
+
     public function add()
     {
 
@@ -34,6 +47,11 @@ class Catalog extends AbstractController
             'type' => 'text',
             'placeholder' => 'Metai'
         ]);
+        $form->input([
+            'name' => 'image',
+            'type' => 'text',
+            'placeholder' => 'Paveiksliukas'
+        ]);
 
         $form->input([
             'type' => 'submit',
@@ -43,10 +61,15 @@ class Catalog extends AbstractController
 
         $this->data['form'] = $form->getForm();
         $this->render('catalog/create');
+
     }
 
     public function create()
     {
+        $slug = Url::slug($_POST['title']);
+        while (!Ad::isValueUnic('slug', $slug)) {
+            $slug = $slug . rand(0, 100);
+        }
         $ad = new Ad();
         $ad->setTitle($_POST['title']);
         $ad->setDescription($_POST['description']);
@@ -54,6 +77,10 @@ class Catalog extends AbstractController
         $ad->setModelId(1);
         $ad->setPrice($_POST['price']);
         $ad->setYear($_POST['year']);
+        $ad->setImage($_POST['image']);
+        $ad->setActive(1);
+        $ad->setSlug($slug);
+        $ad->setViews(0);
         $ad->setTypeId(1);
         $ad->setUserId($_SESSION['user_id']);
         $ad->save();
@@ -61,17 +88,16 @@ class Catalog extends AbstractController
 
     public function edit($id)
     {
-
         if (!isset($_SESSION['user_id'])) {
             Url::redirect('');
         }
-
         $ad = new Ad();
         $ad->load($id);
 
         if ($_SESSION['user_id'] != $ad->getUserId()) {
             Url::redirect('');
         }
+
         $form = new FormHelper('catalog/update', 'POST');
         $form->input([
             'name' => 'title',
@@ -95,6 +121,12 @@ class Catalog extends AbstractController
             'value' => $ad->getPrice()
         ]);
         $form->input([
+            'name' => 'image',
+            'type' => 'text',
+            'placeholder' => 'Kaina',
+            'value' => $ad->getImage()
+        ]);
+        $form->input([
             'name' => 'year',
             'type' => 'text',
             'placeholder' => 'Metai',
@@ -103,8 +135,8 @@ class Catalog extends AbstractController
 
         $form->input([
             'type' => 'submit',
-            'value' => 'Save',
-            'name' => 'Save'
+            'value' => 'sukurti',
+            'name' => 'create'
         ]);
 
         $this->data['form'] = $form->getForm();
@@ -120,20 +152,29 @@ class Catalog extends AbstractController
         $ad->setDescription($_POST['description']);
         $ad->setManufacturerId(1);
         $ad->setModelId(1);
+        $ad->setImage($_POST['image']);
         $ad->setPrice($_POST['price']);
         $ad->setYear($_POST['year']);
         $ad->setTypeId(1);
         $ad->save();
     }
 
-    public function all()
+    public function show($slug)
     {
-        
-    }
-
-    public function show($id)
-    {
-
+        $ad = new Ad();
+        $ad->loadBySlug($slug);
+        $newViews = (int)$ad->getViews() + 1;
+        $ad->setViews($newViews);
+        $ad->save();
+        $this->data['ad'] = $ad;
+        $this->data['title'] = $ad->getTitle();
+        $this->data['meta_description'] = $ad->getDescription();
+        if ($this->data['ad']) {
+            $this->render('catalog/single');
+        } else {
+            $this->render('parts/errors/error404');
+        }
     }
 
 }
+
