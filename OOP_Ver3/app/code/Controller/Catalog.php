@@ -7,8 +7,9 @@ use Helper\FormHelper;
 use Helper\Logger;
 use Helper\Url;
 use Model\Ad;
+use Core\Interfaces\ControllerInterface;
 
-class Catalog extends AbstractController
+class Catalog extends AbstractController implements ControllerInterface
 {
 
     public function index()

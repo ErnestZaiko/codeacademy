@@ -4,8 +4,9 @@ namespace Model;
 
 use Helper\DBHelper;
 use Core\AbstractModel;
+use Core\Interfaces\ModelInterface;
 
-class Ad extends AbstractModel
+class Ad extends AbstractModel implements ModelInterface
 {
     protected const TABLE = 'ads';
 
@@ -209,7 +210,7 @@ class Ad extends AbstractModel
         return $this->views;
     }
 
-    protected function assignData()
+    public function assignData()
     {
         $this->data = [
             'title' => $this->title,

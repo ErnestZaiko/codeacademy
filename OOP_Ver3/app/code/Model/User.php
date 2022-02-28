@@ -6,8 +6,9 @@ use Helper\DBHelper;
 use Helper\FormHelper;
 use Model\City;
 use Core\AbstractModel;
+use Core\Interfaces\ModelInterface;
 
-class User extends AbstractModel
+class User extends AbstractModel implements ModelInterface
 {
     private $name;
 
