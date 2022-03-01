@@ -1,11 +1,11 @@
 {
-    "name": "arnoldas/skelbimai",
+    "name": "ernest/skelbimai",
     "description": "Dar vienas skelbimu portalas",
     "type": "project",
     "authors": [
         {
-            "name": "Arnoldas",
-            "email": "nikaflash@gmail.com"
+            "name": "Ernest Zaiko",
+            "email": "ernest.zaiko@gmail.com"
         }
     ],
     "autoload": {
