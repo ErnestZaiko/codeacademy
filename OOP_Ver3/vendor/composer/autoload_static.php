@@ -19,6 +19,8 @@ class ComposerStaticInit159a20f01c7e1886d91d8cb82f935be5
         'Controller\\User' => __DIR__ . '/../..' . '/app/code/Controller/User.php',
         'Core\\AbstractController' => __DIR__ . '/../..' . '/app/code/Core/AbstractController.php',
         'Core\\AbstractModel' => __DIR__ . '/../..' . '/app/code/Core/AbstractModel.php',
+        'Core\\Interfaces\\ControllerInterface' => __DIR__ . '/../..' . '/app/code/Core/Interfaces/ControllerInterface.php',
+        'Core\\Interfaces\\ModelInterface' => __DIR__ . '/../..' . '/app/code/Core/Interfaces/ModelInterface.php',
         'Helper\\DBHelper' => __DIR__ . '/../..' . '/app/code/Helper/DBHelper.php',
         'Helper\\FormHelper' => __DIR__ . '/../..' . '/app/code/Helper/FormHelper.php',
         'Helper\\Logger' => __DIR__ . '/../..' . '/app/code/Helper/Logger.php',

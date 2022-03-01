@@ -14,6 +14,8 @@ return array(
     'Controller\\User' => $baseDir . '/app/code/Controller/User.php',
     'Core\\AbstractController' => $baseDir . '/app/code/Core/AbstractController.php',
     'Core\\AbstractModel' => $baseDir . '/app/code/Core/AbstractModel.php',
+    'Core\\Interfaces\\ControllerInterface' => $baseDir . '/app/code/Core/Interfaces/ControllerInterface.php',
+    'Core\\Interfaces\\ModelInterface' => $baseDir . '/app/code/Core/Interfaces/ModelInterface.php',
     'Helper\\DBHelper' => $baseDir . '/app/code/Helper/DBHelper.php',
     'Helper\\FormHelper' => $baseDir . '/app/code/Helper/FormHelper.php',
     'Helper\\Logger' => $baseDir . '/app/code/Helper/Logger.php',
